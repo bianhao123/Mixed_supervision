@@ -1,0 +1,86 @@
+General:
+    comment: paper
+    seed: 2021
+    fp16: True
+    amp_level: O1
+    precision: 16 # 半Half precision training
+    multi_gpu_mode: ddp
+    gpus: -1
+    max_epochs: &epoch 2000
+    grad_acc: 8
+    frozen_bn: False
+    debug: False  # This value overwritten in train.py
+    server: train #kaggle #local 代表训练，kaggle代表测试
+    log_dir: ./logs
+
+Data:
+    base_path: data/SICAPv2
+    fold: 3
+    nfolds: 4
+    label_dir: dataset_csv/SICAPv2
+    data_load_mode: 0 # 数据加载模式: 0表示所有数据信息均在一个.bin的文件里。1表示采用SegGini方式加载
+    train_dataset:
+        image_dir: 
+        batch_size: 1 #6
+        num_workers: 8
+
+    test_dataset:
+        batch_size: 1
+        num_workers: 8
+
+Package_name:
+    data_name: datasets.Mixed_data
+    # model_name: models.mixed_supervision
+    interface_name: models.model_interface
+
+Model:
+    type: Mixed_supervision
+    num_classes: 4
+    masking_ratio: 0.5
+    depth: 2
+    num_heads: 6
+    mlp_ratio: 3.0
+    skip_lam: 2.0
+    drop_path_rate: 0.1
+    embed_dim: 1280
+
+
+Optimizer:
+    opt: lookahead_radam
+    lr: 0.0002
+    opt_betas: null
+    opt_eps: null #大或等于0的小浮点数，防止除0错误
+    momentum: null #0.9
+    weight_decay: 0.00001
+
+
+Monitor:
+    name: val_AUROC
+    filename: '{epoch:02d}-{step}-{val_AUROC:.4f}'
+    verbose: True
+    save_top_k: 1
+    mode: 'max'
+
+Callback:
+    mixed_loss_callback:
+        - callbacks.mixed_loss_callbacks
+        - mixed_loss
+
+
+Loss:
+  slide:
+    class: MultiLabelBCELoss
+    params: {}
+  instance:
+    class: InstanceStochasticCrossEntropy
+    params:
+      background_label: 4
+      drop_probability: 0.0
+      instances_to_keep: null
+  params:
+      use_weighted_loss: True
+      use_log_frequency_weights: True
+      instance_weight: 0.5
+
+
+

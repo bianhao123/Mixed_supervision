@@ -1,0 +1,5 @@
+logs/
+dataset_csv/SICAPv2/*.pt
+data/SICAPv2/*
+.lh/
+.vscode/
