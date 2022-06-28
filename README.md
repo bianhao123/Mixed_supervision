@@ -40,6 +40,11 @@ data
 
 ```
 ## Installation
+- Linux (Tested on Ubuntu 18.04)
+- NVIDIA GPU (Tested on a single Nvidia GeForce RTX 3090)
+- Python (3.7.11), h5py (2.10.0), opencv-python (4.1.2.30), PyTorch (1.10.1), torchvision (0.11.2), pytorch-lightning (1.5.10), timm (0.5.4), histocartography (0.2.1), protobuf (3.19.1), dgl (0.4.3.post2).
+
+Please refer to the following instructions.
 ```bash
 # create and activate the conda environment
 conda create -n mixed_supervision python=3.7 -y
