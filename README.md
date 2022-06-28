@@ -1,14 +1,14 @@
 # Multiple Instance Learning with Mixed Supervision in Gleason Grading
 <details>
 <summary>
-    <b>Multiple Instance Learning with Mixed Supervision in Gleason Grading</b>, MICCAI2022. <a href="" target="blank">[arXiv]</a>
+    <b>Multiple Instance Learning with Mixed Supervision in Gleason Grading</b>, MICCAI2022. <a href="https://arxiv.org/abs/2206.12798v1" target="blank">[arXiv]</a>
 </summary>
 
 ```tex
 @article{bian2022multiple,
   title={Multiple Instance Learning with Mixed Supervision in Gleason Grading},
   author={Hao Bian, Zhuchen Shao, Yang Chen, Yifeng Wang, Haoqian Wang, Jian Zhang, Yongbing Zhang},
-  journal={arXiv preprint arXiv:2206.12798},
+  journal={arXiv preprint arXiv:2206.12798v1},
   year={2022}
 }
 ```
@@ -28,7 +28,7 @@
 ## Data Preprocess
 [SICAPv2 dataset](https://data.mendeley.com/datasets/9xxm58dvs3/1) is a database containing prostate histology whole slide images with both annotations of global Gleason scores and path-level Gleason grades. 
 We follow the data process pipeline of [SegGini-MICCAI 2021](https://github.com/histocartography/seg-gini). We provide the processed data (containing extracted instance feature, slide-level and generated instance-level labels).
-Download the [processed_data](https://drive.google.com/file/d/1KPZ8ikuboxdr79_H895CCHLQVYiDv0LV/view?usp=sharing) and then put them into the `data/SICAPv2`. The form are as follows:
+Download the [processed_data](https://drive.google.com/file/d/1KPZ8ikuboxdr79_H895CCHLQVYiDv0LV/view?usp=sharing) and then put them into the `data/SICAPv2`. The form is as follows:
 ```bash
 data
 └── SICAPv2
@@ -111,7 +111,7 @@ python metrics.py --config $CONFIG
 @article{bian2022multiple,
   title={Multiple Instance Learning with Mixed Supervision in Gleason Grading},
   author={Hao Bian, Zhuchen Shao, Yang Chen, Yifeng Wang, Haoqian Wang, Jian Zhang, Yongbing Zhang},
-  journal={arXiv preprint arXiv:2206.12798},
+  journal={arXiv preprint arXiv:2206.12798v1},
   year={2022}
 }
 
